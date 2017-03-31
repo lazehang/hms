@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Room;
 use App\Student;
 use App\Vaccancy;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Symfony\Component\DomCrawler\Image;
@@ -32,14 +33,23 @@ class AdminController extends Controller
 
     function post_student(Requests\CreateStudent $request){
 
-        $student = new Student;
-        $student->name = $request['name'];
-        $student->contact = $request['contact'];
-        $student->address = $request['address'];
-        $student->school = $request['school'];
-        $student->father_name = $request['father_name'];
-        $student->father_contact = $request['father_contact'];
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
 
+
+        $student = new Student([
+        'name' => $request['name'],
+        'contact' => $request['contact'],
+        'address' => $request['address'],
+        'school' => $request['school'],
+        'father_name' => $request['father_name'],
+        'father_contact' => $request['father_contact'],
+
+
+        ]);
         if ($request->hasFile('profile_pic')){
             $image = $request->file('profile_pic');
             $filename=time().'.'.$image->getClientOriginalExtension();
@@ -47,7 +57,7 @@ class AdminController extends Controller
             $student->profile_pic = $filename;
         }
 
-        $student->save();
+        $user->student()->save($student);
 //        $this->validate($request, [
 //            'profile_pic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
 //        ]);
@@ -59,6 +69,26 @@ class AdminController extends Controller
 //        Student::create($request->all());
         return redirect()->route('students');
 
+    }
+    public function super(){
+        $users = User::all();
+        return view('front.admin.super', ['users' => $users]);
+    }
+
+    public function postAdminAssignRoles(Request $request)
+    {
+        $user = User::where('email', $request['email'])->first();
+        $user->roles()->detach();
+        if ($request['role_user']) {
+            $user->roles()->attach(Role::where('name', 'User')->first());
+        }
+        if ($request['role_author']) {
+            $user->roles()->attach(Role::where('name', 'Author')->first());
+        }
+        if ($request['role_admin']) {
+            $user->roles()->attach(Role::where('name', 'Admin')->first());
+        }
+        return redirect()->back();
     }
 
 

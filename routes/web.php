@@ -52,6 +52,8 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('register_std',['as' => 'register_std', 'uses' => 'AdminController@register_std']);
     Route::get('students',['as' => 'students', 'uses' => 'AdminController@students']);
     Route::post('post_student', ['as' => 'post_student', 'uses' => 'AdminController@post_student'] );
+    Route::post('assignRole', ['as' => 'assignRole', 'uses' => 'AdminController@postAdminAssignRoles']);
+    Route::get('super', ['as' => 'super', 'uses' => 'AdminController@super']);
 
 });
 
