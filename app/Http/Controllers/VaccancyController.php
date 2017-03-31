@@ -47,6 +47,20 @@ class VaccancyController extends Controller
         return redirect()->route('vaccancies');
 
     }
+    function bookRoom($id) {
+        $books = Vaccancy::find($id);
+        $books->decrement('seats');
+        if ($books->seats <= 0){
+            $books->delete();
+        }
+
+        return redirect()->route('booked',['books' => $books]);
+    }
+    function booked($id){
+        $book = Vaccancy::find($id);
+
+        return view('front.vaccancy.booked', ['book' => $book]);
+    }
 
 
 }

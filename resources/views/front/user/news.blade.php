@@ -21,11 +21,13 @@ News
                         <tbody>
 
                         @foreach( $vaccancies as $vaccancy )
+                            @if($vaccancy->seats > 0)
                             <tr>
                                 <td>{{ $vaccancy->type }}</td>
                                 <td>{{ $vaccancy->seats }}</td>
-                                <td><a href="{{route('news')}}"> See more </a></td>
+                                <td><a href="{{route('bookRoom', $vaccancy->id)}}"> Book Now </a></td>
                             </tr>
+                            @endif
                         @endforeach
 
                         </tbody>

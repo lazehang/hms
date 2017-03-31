@@ -13,11 +13,12 @@
 
 Route::group(['prefix'], function( ) {
 
-
     Route::get('/',[ 'as' => 'home', 'uses' => 'SiteController@index'] );
-    Route::get('account',[ 'as' => 'account', 'uses' => 'SiteController@account'])->middleware('auth');
-Route::get('news',[ 'as' => 'news', 'uses' => 'SiteController@news'] );
+    Route::get('account',[ 'as' => 'account', 'uses' => 'SiteController@account'])->middleware('AdminAuth');
+    Route::get('news',[ 'as' => 'news', 'uses' => 'SiteController@news'] );
     Route::get('details',[ 'as' => 'details', 'uses' => 'SiteController@details'] );
+    Route::get('bookRoom/{id}',['as' => 'bookRoom', 'uses' => 'VaccancyController@bookRoom'])->middleware('auth');
+    Route::get('booked/{id}', ['as' => 'booked', 'uses' => 'VaccancyController@booked']);
 //    Route::get('loginstd',['as' => 'loginstd', 'uses' => 'LoginController@login']);
 //    Route::post('loginprocess',['as' => 'loginprocess', 'uses' => 'LoginController@loginprocess']);
 //    Route::get('logoutstd',['as' => 'logoutstd', 'uses' => 'loginController@logout']);
@@ -51,8 +52,6 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('register_std',['as' => 'register_std', 'uses' => 'AdminController@register_std']);
     Route::get('students',['as' => 'students', 'uses' => 'AdminController@students']);
     Route::post('post_student', ['as' => 'post_student', 'uses' => 'AdminController@post_student'] );
-
-
 
 });
 
