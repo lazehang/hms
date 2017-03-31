@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Room;
 use App\Student;
+use App\Vaccancy;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Symfony\Component\DomCrawler\Image;
@@ -11,7 +13,11 @@ class AdminController extends Controller
 {
     function index()
     {
-    	return view('front.admin.index');
+        $vaccancy = Vaccancy::get()->count();
+        $room = Room::get()->count();
+        $seat = Vaccancy::all()->sum('seats');
+        $student = Student::get()->count();
+    	return view('front.admin.index', ['vaccancy' => $vaccancy, 'room' => $room, 'seat' => $seat, 'student' => $student]);
     }
 
     function register_std(){
@@ -20,7 +26,8 @@ class AdminController extends Controller
 
     }
     function students() {
-        return view('front.admin.students');
+        $students = Student::all();
+        return view('front.admin.students', ['students' => $students]);
     }
 
     function post_student(Requests\CreateStudent $request){

@@ -10,24 +10,48 @@
         </div>
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Student</h1>
+            <div class="container">
+                <h1>
+                    Students
+                    <small>Control panel</small>
+                </h1>
+
+                <a href="{{route('register_std')}}">
+                    <button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>Register Student</button>
+                </a>
+            </div>
 
         </section>
+        <div class="container">
         <div class="row">
             <!-- left column -->
             <div class="col-md-12">
 
             <div>
-                <table>
+                <table class="table table-striped table-striped">
                     <thead>
                     <tr>
-                        <td>Name</td>
-                        <td>Contact</td>
-                        <td>Image</td>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>School</th>
+                        <th>Father's Name</th>
+                        <th>Father's Address</th>
+                        <th>Image</th>
                     </tr>
                   </thead>
                     <tbody>
-                    <td></td>
+                    @foreach($students as $student)
+                        <tr>
+                            <td>{{$student->name}}</td>
+                            <td>{{$student->contact}}</td>
+                            <td>{{$student->adddres}}</td>
+                            <td>{{$student->school}}</td>
+                            <td>{{$student->father_name}}</td>
+                            <td>{{$student->father_contact}}</td>
+                            <td><img height="200px" class="img img-bordered-sm" src="{{asset('assets/images/')}}/{{$student->profile_pic}}"></td>
+                        </tr>
+                        @endforeach
                     </tbody>
 
                 </table>
@@ -35,8 +59,5 @@
 
             </div>
 </div>
-
-
-
-
+    </div>
 @stop

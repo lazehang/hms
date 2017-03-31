@@ -23,10 +23,10 @@
                     <div class="social-media hidden-sm hidden-xs">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="{{route ('loginstd')}}"> Login</a>
+                                <a href="{{route ('login')}}"> Login</a>
                             </li>
 
-                            <li><a href="{{route ('logoutstd')}}"> Logout </a></li>
+                            <li><a href="{{route ('logout')}}"> Logout </a></li>
                         </ul>
                     </div>
                 </div>

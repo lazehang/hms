@@ -18,7 +18,7 @@
             </ul>
         </li>
         <li>
-            <a href="#">Feedbacks</a>
+            <a href="{{route('students')}}">Student</a>
         </li>
         <li>
             <a href="#">About</a>

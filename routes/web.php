@@ -18,9 +18,9 @@ Route::group(['prefix'], function( ) {
     Route::get('account',[ 'as' => 'account', 'uses' => 'SiteController@account'])->middleware('auth');
 Route::get('news',[ 'as' => 'news', 'uses' => 'SiteController@news'] );
     Route::get('details',[ 'as' => 'details', 'uses' => 'SiteController@details'] );
-    Route::get('loginstd',['as' => 'loginstd', 'uses' => 'LoginController@login']);
-    Route::post('loginprocess',['as' => 'loginprocess', 'uses' => 'LoginController@loginprocess']);
-    Route::get('logoutstd',['as' => 'logoutstd', 'uses' => 'loginController@logout']);
+//    Route::get('loginstd',['as' => 'loginstd', 'uses' => 'LoginController@login']);
+//    Route::post('loginprocess',['as' => 'loginprocess', 'uses' => 'LoginController@loginprocess']);
+//    Route::get('logoutstd',['as' => 'logoutstd', 'uses' => 'loginController@logout']);
 
  //    Route::get('course/add','CourseController@create');
  //    Route::get('course', ['as' => 'courseList','uses' => 'CourseController@index'] );
@@ -48,7 +48,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('editVaccancy/{id}', ['as' => 'editVaccancy', 'uses' => 'VaccancyController@edit']);
     Route::post('updateVaccancy/{id}', ['as' => 'updateVaccancy', 'uses' => 'VaccancyController@update']);
     Route::get('deleteVaccancy/{id}',['as' => 'deleteVaccancy', 'uses' => 'VaccancyController@delete']);
-    Route::get('register_std', 'AdminController@register_std');
+    Route::get('register_std',['as' => 'register_std', 'uses' => 'AdminController@register_std']);
     Route::get('students',['as' => 'students', 'uses' => 'AdminController@students']);
     Route::post('post_student', ['as' => 'post_student', 'uses' => 'AdminController@post_student'] );
 
