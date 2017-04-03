@@ -14,11 +14,11 @@
 Route::group(['prefix'], function( ) {
 
     Route::get('/',[ 'as' => 'home', 'uses' => 'SiteController@index'] );
-    Route::get('account',[ 'as' => 'account', 'uses' => 'SiteController@account'])->middleware('AdminAuth');
+    Route::get('account',[ 'as' => 'account', 'uses' => 'SiteController@account'])->middleware('auth');
     Route::get('news',[ 'as' => 'news', 'uses' => 'SiteController@news'] );
     Route::get('details',[ 'as' => 'details', 'uses' => 'SiteController@details'] );
-    Route::get('bookRoom/{id}',['as' => 'bookRoom', 'uses' => 'VaccancyController@bookRoom'])->middleware('auth');
-    Route::get('booked/{id}', ['as' => 'booked', 'uses' => 'VaccancyController@booked']);
+    Route::get('bookRoom/{id}',['as' => 'bookRoom', 'uses' => 'VaccancyController@bookRoom', 'middleware' => 'roles', 'roles' => 'User'])->middleware('auth');
+    Route::get('booked/{id}', ['as' => 'booked', 'uses' => 'VaccancyController@booked'])->middleware('auth');
 //    Route::get('loginstd',['as' => 'loginstd', 'uses' => 'LoginController@login']);
 //    Route::post('loginprocess',['as' => 'loginprocess', 'uses' => 'LoginController@loginprocess']);
 //    Route::get('logoutstd',['as' => 'logoutstd', 'uses' => 'loginController@logout']);
@@ -41,9 +41,9 @@ Route::group(['prefix'], function( ) {
 
 
 });
-Route::group(['prefix' => 'admin'], function(){
-	Route::get('/', ['as' => 'admin', 'uses' => 'AdminController@index'])->middleware('auth');
-	Route::get('vaccancies', ['as' => 'vaccancies', 'uses' => 'VaccancyController@view'])->middleware('AdminAuth');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','roles'], 'roles' => ['Admin','Super']], function(){
+	Route::get('/', ['as' => 'admin', 'uses' => 'AdminController@index']);
+	Route::get('vaccancies', ['as' => 'vaccancies', 'uses' => 'VaccancyController@view']);
     Route::get('addVaccancy', ['as' => 'addVaccancy', 'uses' => 'VaccancyController@add']);
     Route::post('postVaccancy', ['as' => 'postVaccancy', 'uses' => 'VaccancyController@post']);
     Route::get('editVaccancy/{id}', ['as' => 'editVaccancy', 'uses' => 'VaccancyController@edit']);
@@ -53,9 +53,10 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('students',['as' => 'students', 'uses' => 'AdminController@students']);
     Route::post('post_student', ['as' => 'post_student', 'uses' => 'AdminController@post_student'] );
     Route::post('assignRole', ['as' => 'assignRole', 'uses' => 'AdminController@postAdminAssignRoles']);
-    Route::get('super', ['as' => 'super', 'uses' => 'AdminController@super']);
+
 
 });
+Route::get('super', ['as' => 'super', 'uses' => 'AdminController@super', 'middleware' => 'roles', 'roles' => 'Super']);
 
 Auth::routes();
 

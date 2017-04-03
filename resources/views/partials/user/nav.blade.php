@@ -22,19 +22,23 @@
                     </div>
                     <div class="social-media hidden-sm hidden-xs">
                         <ul class="nav navbar-nav">
+                            @if(Auth::guest())
                             <li>
                                 <a href="{{route ('login')}}"> Login</a>
                             </li>
-
+                            @endif
+                            @if(Auth::user())
                             <li><a href="{{ url('/logout') }}"
                                    onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>
 
+
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form></li>
+                                @endif
                         </ul>
                     </div>
                 </div>

@@ -6,6 +6,7 @@ use App\Room;
 use App\Student;
 use App\Vaccancy;
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Symfony\Component\DomCrawler\Image;
@@ -82,8 +83,8 @@ class AdminController extends Controller
         if ($request['role_user']) {
             $user->roles()->attach(Role::where('name', 'User')->first());
         }
-        if ($request['role_author']) {
-            $user->roles()->attach(Role::where('name', 'Author')->first());
+        if ($request['role_super']) {
+            $user->roles()->attach(Role::where('name', 'Super')->first());
         }
         if ($request['role_admin']) {
             $user->roles()->attach(Role::where('name', 'Admin')->first());
