@@ -29,7 +29,7 @@ class User extends Authenticatable
     ];
 
     public function student(){
-        return $this->hasOne('Student');
+        return $this->hasOne('App\Student');
     }
 
     public function roles(){

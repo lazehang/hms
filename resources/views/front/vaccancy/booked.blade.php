@@ -10,7 +10,7 @@
 
                 <h2>{{$book->type}}</h2>
             <br>
-            <small>You get a call in a moment !!</small>
+           <small>You get a call in a moment !!</small>
         </div>
     </section>
 
