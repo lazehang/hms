@@ -25,7 +25,7 @@ News
                             <tr>
                                 <td>{{ $vaccancy->type }}</td>
                                 <td>{{ $vaccancy->seats }}</td>
-                                <td><a href="{{route('bookRoom', $vaccancy->id)}}"> Book Now </a></td>
+                                <td><a href="{{route('booking', $vaccancy->id)}}"> Book Now </a></td>
                             </tr>
                             @endif
                         @endforeach

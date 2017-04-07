@@ -17,7 +17,8 @@ Route::group(['prefix'], function( ) {
     Route::get('account',[ 'as' => 'account', 'uses' => 'SiteController@account'])->middleware('auth');
     Route::get('news',[ 'as' => 'news', 'uses' => 'SiteController@news'] );
     Route::get('details',[ 'as' => 'details', 'uses' => 'SiteController@details'] );
-    Route::get('bookRoom/{id}',['as' => 'bookRoom', 'uses' => 'VaccancyController@bookRoom', 'middleware' => 'roles', 'roles' => 'User'])->middleware('auth');
+    Route::get('booking/{id}',['as' => 'booking', 'uses' => 'VaccancyController@booking', 'middleware' => 'roles', 'roles' => 'User'])->middleware('auth');
+    Route::post('bookRoom/{id}',['as' => 'bookRoom', 'uses' => 'VaccancyController@bookRoom', 'middleware' => 'roles', 'roles' => 'User'])->middleware('auth');
     Route::get('booked/{id}', ['as' => 'booked', 'uses' => 'VaccancyController@booked'])->middleware('auth');
 //    Route::get('loginstd',['as' => 'loginstd', 'uses' => 'LoginController@login']);
 //    Route::post('loginprocess',['as' => 'loginprocess', 'uses' => 'LoginController@loginprocess']);

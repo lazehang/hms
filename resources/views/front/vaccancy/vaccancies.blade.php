@@ -45,6 +45,35 @@
         {!! $vaccancies -> links() !!}
     </div>
 
+     <div class="container">
+
+         <table class="table table-responsive" >
+             <thead>
+             <tr>
+
+                 <td>Booking_id</td>
+                 <td></td>
+                 <td>Name</td>
+             </tr>
+             </thead>
+
+             <tbody>
+
+             @foreach( $bookings as $booking )
+                 <tr>
+                     <td>{{ $booking->vaccancy_id }}</td>
+                     <td>Room has been booked by </td>
+                     <td>{{ $booking->name }}</td>
+                     <td>
+                         <a href=""> <button class="btn btn-danger btn-sm">Delete</button></a>
+                     </td>
+                 </tr>
+             @endforeach
+             </tbody>
+         </table>
+         {!! $bookings -> links() !!}
+     </div>
+
   </div>
   <!-- /.content-wrapper -->
 
