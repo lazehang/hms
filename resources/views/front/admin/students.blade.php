@@ -49,7 +49,7 @@
                             <td>{{$student->school}}</td>
                             <td>{{$student->father_name}}</td>
                             <td>{{$student->father_contact}}</td>
-                            <td><img height="200px" class="img img-bordered-sm" src="{{asset('assets/images/')}}/{{$student->profile_pic}}"></td>
+                            <td><img height="200px" width="200px" class="img img-bordered-sm" src="{{asset('assets/images/')}}/{{$student->profile_pic}}"></td>
                         </tr>
                         @endforeach
                     </tbody>
