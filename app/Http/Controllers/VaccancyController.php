@@ -50,7 +50,7 @@ class VaccancyController extends Controller
     function bookRoom($id) {
         $books = Vaccancy::find($id);
         $books->decrement('seats');
-        if($books <= 0)
+        if($books['seats'] <= 0)
         {
             $books->delete();
         }
