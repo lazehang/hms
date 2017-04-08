@@ -7,7 +7,7 @@ use App\Vaccancy;
 use App\Room;
 use App\Http\Requests;
 use App\Booking;
-
+use SebastianBergmann\Comparator\Book;
 
 
 class VaccancyController extends Controller
@@ -73,6 +73,18 @@ class VaccancyController extends Controller
         $book = Vaccancy::find($id);
 
        return view('front.vaccancy.booked', ['book' => $book]);
+    }
+
+    function  deleteBooking($id, $vaccancy_id){
+        $booking = Booking::find($id);
+        $booking->delete();
+
+        $vaccancy = Vaccancy::find($vaccancy_id);
+
+        $vaccancy->increment('seats');
+
+        return redirect()->route('vaccancies');
+
     }
 
 

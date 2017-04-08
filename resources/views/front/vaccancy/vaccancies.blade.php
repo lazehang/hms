@@ -65,7 +65,7 @@
                      <td>Room has been booked by </td>
                      <td>{{ $booking->name }}</td>
                      <td>
-                         <a href=""> <button class="btn btn-danger btn-sm">Delete</button></a>
+                         <a href="{{ route('deleteBooking',[$booking->id, $booking->vaccancy_id] ) }}"> <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button></a>
                      </td>
                  </tr>
              @endforeach

@@ -14,12 +14,12 @@
 Route::group(['prefix'], function( ) {
 
     Route::get('/',[ 'as' => 'home', 'uses' => 'SiteController@index'] );
-    Route::get('account',[ 'as' => 'account', 'uses' => 'SiteController@account'])->middleware('auth');
+    Route::get('account',[ 'as' => 'account', 'uses' => 'SiteController@account', 'middleware' => 'roles', 'roles' => 'User'])->middleware('auth');
     Route::get('news',[ 'as' => 'news', 'uses' => 'SiteController@news'] );
     Route::get('details',[ 'as' => 'details', 'uses' => 'SiteController@details'] );
-    Route::get('booking/{id}',['as' => 'booking', 'uses' => 'VaccancyController@booking', 'middleware' => 'roles', 'roles' => 'User'])->middleware('auth');
-    Route::post('bookRoom/{id}',['as' => 'bookRoom', 'uses' => 'VaccancyController@bookRoom', 'middleware' => 'roles', 'roles' => 'User'])->middleware('auth');
-    Route::get('booked/{id}', ['as' => 'booked', 'uses' => 'VaccancyController@booked'])->middleware('auth');
+    Route::get('booking/{id}',['as' => 'booking', 'uses' => 'VaccancyController@booking']);
+    Route::post('bookRoom/{id}',['as' => 'bookRoom', 'uses' => 'VaccancyController@bookRoom']);
+    Route::get('booked/{id}', ['as' => 'booked', 'uses' => 'VaccancyController@booked']);
 //    Route::get('loginstd',['as' => 'loginstd', 'uses' => 'LoginController@login']);
 //    Route::post('loginprocess',['as' => 'loginprocess', 'uses' => 'LoginController@loginprocess']);
 //    Route::get('logoutstd',['as' => 'logoutstd', 'uses' => 'loginController@logout']);
@@ -54,6 +54,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','roles'], 'roles' => 
     Route::get('students',['as' => 'students', 'uses' => 'AdminController@students']);
     Route::post('post_student', ['as' => 'post_student', 'uses' => 'AdminController@post_student'] );
     Route::post('assignRole', ['as' => 'assignRole', 'uses' => 'AdminController@postAdminAssignRoles']);
+    Route::get('deleteBooking/{id}/{vaccancy_id}', ['as' => 'deleteBooking', 'uses' => 'VaccancyController@deleteBooking']);
 
 
 });
