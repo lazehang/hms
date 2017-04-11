@@ -7,15 +7,15 @@ use App\Vaccancy;
 use App\Room;
 use App\Http\Requests;
 use App\Booking;
-use SebastianBergmann\Comparator\Book;
+
 
 
 class VaccancyController extends Controller
 {
     function view()
     {
-	 $vaccancies = Vaccancy::with('room')->paginate(10);
-        $bookings = Booking::paginate(10);
+	 $vaccancies = Vaccancy::with('room')->paginate(5);
+        $bookings = Booking::paginate(5);
 	 return view('front.vaccancy.vaccancies', ['vaccancies' => $vaccancies, 'bookings' => $bookings ]);
     }
     function add(){
@@ -23,8 +23,18 @@ class VaccancyController extends Controller
         return view('front.vaccancy.addVaccancy',['rooms' => $rooms]);
     }
     function post( Requests\CreateVaccancy $request){
+        $type = $request['type'];
+        $vaccancy = Vaccancy::where('type', $type)->first();
 
-        Vaccancy::create($request->all());
+        if(count($vaccancy) > 0)
+        {
+            $old = $vaccancy->seats;
+            $seats = $request['seats'];
+            $vaccancy->update(['seats' => ($old + $seats)]);
+        }else{
+            Vaccancy::create($request->all());
+        }
+
         return redirect()-> route('vaccancies');
 
     }
@@ -66,7 +76,6 @@ class VaccancyController extends Controller
         $books = Vaccancy::find($id);
         $books->decrement('seats');
 
-        $booking->save();
         return redirect()->route('booked',['books' => $books]);
     }
     function booked($id){

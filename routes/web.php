@@ -55,6 +55,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','roles'], 'roles' => 
     Route::post('post_student', ['as' => 'post_student', 'uses' => 'AdminController@post_student'] );
     Route::post('assignRole', ['as' => 'assignRole', 'uses' => 'AdminController@postAdminAssignRoles']);
     Route::get('deleteBooking/{id}/{vaccancy_id}', ['as' => 'deleteBooking', 'uses' => 'VaccancyController@deleteBooking']);
+    Route::get('room', ['as' => 'room', 'uses'=> 'AdminController@room']);
+    Route::post('assignRoom', ['as' => 'assignRoom', 'uses' => 'AdminController@postAssignRoom']);
 
 
 });

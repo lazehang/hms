@@ -18,7 +18,7 @@ class CreateBookingsTable extends Migration
             $table->string('name');
             $table->integer('vaccancy_id')->unsigned();
             $table->timestamps();
-            $table->foreign('vaccancy_id')->references('id')->on('vaccancies');
+            $table->foreign('vaccancy_id')->references('id')->on('vaccancies')->onDelete('Cascade');
         });
     }
 

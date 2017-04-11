@@ -14,11 +14,12 @@ class CreateStdroomTable extends Migration
     public function up()
     {
         Schema::create('stdroom', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('std_id')->unsigned()->default(0);
             $table->integer('room_id')->unsigned()->default(0);
+            $table->timestamps();
             $table->foreign('std_id')->references('std_id')->on('students')->onDelete('Cascade');
             $table->foreign('room_id')->references('room_id')->on('rooms')->onDelete('Cascade');
-            $table->timestamps();
         });
     }
 
