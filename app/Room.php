@@ -14,4 +14,7 @@ class Room extends Model
         return $this->hasMany(Vaccancy::class);
 
     }
+    public function students() {
+        return $this->belongsToMany('App\Student', 'stdroom', 'room_id', 'std_id');
+    }
 }

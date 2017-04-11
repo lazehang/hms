@@ -76,6 +76,11 @@ class AdminController extends Controller
         return view('front.admin.super', ['users' => $users]);
     }
 
+    public function room(){
+        $students = Student::all();
+        return view('front.admin.room', ['students' => $students]);
+    }
+
     public function postAdminAssignRoles(Request $request)
     {
         $user = User::where('email', $request['email'])->first();
@@ -88,6 +93,26 @@ class AdminController extends Controller
         }
         if ($request['role_admin']) {
             $user->roles()->attach(Role::where('name', 'Admin')->first());
+        }
+        return redirect()->back();
+    }
+
+    public function postAssignRoom(Request $request)
+    {
+        $student = Student::where('name', $request['name'])->first();
+            $student->rooms()->detach();
+
+        if ($request['room_1']) {
+            $student->rooms()->attach(Room::where('type', 'single')->first());
+        }
+        if ($request['room_2']) {
+            $student->rooms()->attach(Room::where('type', '2 seater')->first());
+        }
+        if ($request['room_3']) {
+            $student->rooms()->attach(Room::where('type', '3 seater')->first());
+        }
+        if ($request['room_4']) {
+            $student->rooms()->attach(Room::where('type', '4 seater')->first());
         }
         return redirect()->back();
     }

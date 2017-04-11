@@ -18,7 +18,7 @@
         <div class="container" style="width: 100%">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <table>
+                    <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>Email</th>
