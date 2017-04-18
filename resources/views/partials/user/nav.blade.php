@@ -1,46 +1,33 @@
 
-<nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><img src="{{ asset ("assets/img/logo/logom.png") }}" class="img-responsive" alt="logo"></a>
-                </div>
-                <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
-                    <div class="col-md-8 col-xs-12 nav-wrap">
-                        <ul class="nav navbar-nav">
-                            <li><a href="{{route('home')}}">Home</a></li>
-                            <li><a href="{{route ('account')}}" class="page-scroll">Account</a></li>
-                            <li><a href="{{route ('news')}}" class="page-scroll">News</a></li>
-                            <li><a href="{{route ('details')}}" class="page-scroll">Details</a></li>
-                            <li><a href="about.php" class="page-scroll">About</a></li>
-                        </ul>
-                    </div>
-                    <div class="social-media hidden-sm hidden-xs">
-                        <ul class="nav navbar-nav">
-                            @if(Auth::guest())
-                            <li>
-                                <a href="{{route ('login')}}"> Login</a>
-                            </li>
-                            @endif
-                            @if(Auth::user())
-                            <li><a href="{{ url('/logout') }}"
-                                   onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
 
-
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form></li>
-                                @endif
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+    <div class="container topnav">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand topnav" href="#">Start Bootstrap</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <a href="#services">Services</a>
+                </li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
