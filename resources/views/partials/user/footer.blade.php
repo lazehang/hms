@@ -31,7 +31,7 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 <script>
     $('#exampleModal').on('show.bs.modal', function (event) { var button = $(event.relatedTarget)// Button that triggered the modal
         var recipient = button.data('whatever');

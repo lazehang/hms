@@ -4,87 +4,11 @@
     @stop
 
     @section('content')
-        {{--<section id="details">--}}
-            {{--<div class="container">--}}
-                {{--<h2>Prince Boys Hostel</h2>--}}
-                {{--<hr class="sep">--}}
 
-
-
-            {{--</div>--}}
-
-            {{--<div class="container">--}}
-                {{--<div class="row">--}}
-                    {{--<div class="col-md-12 col-sm-12 col-xs-12">--}}
-                        {{--<div class="contents" id="facilities">--}}
-                            {{--<div class="title">--}}
-                                {{--<h2>Facilities</h2>--}}
-                            {{--</div>--}}
-                            {{--<div class="details-item">--}}
-                            {{--<div class="sub-title col-md-12 col-sm-12 col-xs-12">--}}
-                                {{--<h4>Environment</h4>--}}
-                            {{--</div>--}}
-                            {{--<div class="content col-md-8 col-sm-8 col-xs-12">--}}
-                                {{--<p>--}}
-                                    {{--The hostel is located in apeaceful environment.--}}
-                                    {{--Situated in kamalpokhari one with less pollution and a residential area,--}}
-                                    {{--this hostel is suitable and a perfect place for any students--}}
-                                {{--</p>--}}
-
-
-                            {{--</div>--}}
-                                {{--<div class="content-img col-md-4 col-sm-4 col-xs-12">--}}
-                                    {{--<img src="{{asset ("assets/img/portfolio/2.jpg")}}" alt="content" class="img-responsive">--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-
-                            {{--<div class="details-item">--}}
-                                {{--<div class="sub-title col-md-12 col-sm-12 col-xs-12">--}}
-                                    {{--<h4>Environment</h4>--}}
-                                {{--</div>--}}
-                                {{--<div class="content col-md-8 col-sm-8 col-xs-12">--}}
-                                    {{--<p>--}}
-                                        {{--The hostel is located in apeaceful environment.--}}
-                                        {{--Situated in kamalpokhari one with less pollution and a residential area,--}}
-                                        {{--this hostel is suitable and a perfect place for any students--}}
-                                    {{--</p>--}}
-
-
-                                {{--</div>--}}
-                                {{--<div class="content-img col-md-4 col-sm-4 col-xs-12">--}}
-                                    {{--<img src="{{asset ("assets/img/portfolio/2.jpg")}}" alt="content" class="img-responsive">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="details-item">--}}
-                                {{--<div class="sub-title col-md-12 col-sm-12 col-xs-12">--}}
-                                    {{--<h4>Environment</h4>--}}
-                                {{--</div>--}}
-                                {{--<div class="content col-md-8 col-sm-8 col-xs-12">--}}
-                                    {{--<p>--}}
-                                        {{--The hostel is located in apeaceful environment.--}}
-                                        {{--Situated in kamalpokhari one with less pollution and a residential area,--}}
-                                        {{--this hostel is suitable and a perfect place for any students--}}
-                                    {{--</p>--}}
-
-
-                                {{--</div>--}}
-                                {{--<div class="content-img col-md-4 col-sm-4 col-xs-12">--}}
-                                    {{--<img src="{{asset ("assets/img/portfolio/2.jpg")}}" alt="content" class="img-responsive">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
-        {{--</section>--}}
 
 
         <section id="info-modals">
-            <div class="container">
+            <div class="container content">
                 <div class="row">
 
 
@@ -99,7 +23,7 @@
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="  width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                                 <h4>Time Table</h4>
                                 <span class="text-muted">Check the time table </span>
-                              
+
 
                             </div>
                                 </a>

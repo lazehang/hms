@@ -1,11 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        body{
+            background-image: url({{asset('assets/img/loginhostel.jpg')}});
+            background-size: cover;
+        }
+        #login-panel{
+            font-size: 1.3em;
+            color: gainsboro;
+            margin-top: 10%;
+            background: rgba(0, 0, 0, 0.43);
+            border: none;
+
+
+        }
+        #login-panel .panel-heading{
+            color: #8eb4cb;
+            background-color: rgba(12, 20, 39, 0.85);
+            border: none;
+            font-weight: 600;
+        }
+        #login-panel input {
+            background: #fff;
+        }
+
+    </style>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default" id="login-panel">
+                <div class="panel-heading"><h4>Login</h4></div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}

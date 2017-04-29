@@ -45,7 +45,7 @@
                         <tr>
                             <td>{{$student->name}}</td>
                             <td>{{$student->contact}}</td>
-                            <td>{{$student->adddres}}</td>
+                            <td>{{$student->address}}</td>
                             <td>{{$student->school}}</td>
                             <td>{{$student->father_name}}</td>
                             <td>{{$student->father_contact}}</td>

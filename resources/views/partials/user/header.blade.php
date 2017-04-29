@@ -13,6 +13,10 @@
 
    <!-- Custom CSS -->
    <link href="{{ asset('assets/css/landing-page.css')}}" rel="stylesheet">
+   <link href="{{ asset('assets/css/set1.css')}}" rel="stylesheet">
+   <link href="{{ asset('assets/css/demo.css')}}" rel="stylesheet">
+   <link href="{{ asset('assets/css/normalize.css')}}" rel="stylesheet">
+   <link href="{{ asset('assets/css/custom.css')}}" rel="stylesheet">
 
    <!-- Custom Fonts -->
    <link href="{{ asset('assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">

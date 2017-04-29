@@ -11,6 +11,7 @@
 
     <title>Prince | @yield('title')</title>
     <script type="text/javascript" src="{{asset("assets/Admin/js/jquery-3.1.1.min.js") }}"></script>
+
     <script type="text/javascript">
         $(document).ready(function(e){
             $('.has-sub').click(function(){
@@ -23,6 +24,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="{{asset("assets/Admin/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
 
     <!-- Custom CSS -->
     <link href="{{asset("assets/Admin/simple-sidebar.css")}}" rel="stylesheet">

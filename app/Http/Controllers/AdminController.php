@@ -59,6 +59,7 @@ class AdminController extends Controller
         }
 
         $user->student()->save($student);
+        $user->roles()->attach(Role::where('name', 'User')->first());
 //        $this->validate($request, [
 //            'profile_pic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
 //        ]);

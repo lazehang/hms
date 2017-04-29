@@ -15,9 +15,14 @@ class VaccancyController extends Controller
     function view()
     {
 	 $vaccancies = Vaccancy::with('room')->paginate(5);
-        $bookings = Booking::paginate(5);
+        $bookings = DB::table('bookings')
+                        ->join('vaccancies', 'bookings.vaccancy_id', '=', 'vaccancies.id')
+                        ->select('vaccancies.type', 'bookings.*')
+                        ->paginate(10);
+
 	 return view('front.vaccancy.vaccancies', ['vaccancies' => $vaccancies, 'bookings' => $bookings ]);
     }
+    
     function add(){
         $rooms = Room::all();
         return view('front.vaccancy.addVaccancy',['rooms' => $rooms]);
@@ -69,7 +74,10 @@ class VaccancyController extends Controller
 
         $booking = new Booking([
             'name' => $request['name'],
-            'vaccancy_id' => $request['vaccancy_id']
+            'vaccancy_id' => $request['vaccancy_id'],
+            'contact' => $request['contact'],
+            'message' => $request['message'],
+            'email' => $request['email']
             ]);
         $booking->save();
 

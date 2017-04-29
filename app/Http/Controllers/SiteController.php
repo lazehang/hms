@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Student;
 use Illuminate\Http\Request;
 use App\Vaccancy;
 use App\Home;
 use App\Room;
 use App\Timetable;
+use Illuminate\Support\Facades\Auth;
+use App\StdRoom;
+
 class SiteController extends Controller
 {
     function index(){
@@ -20,8 +24,12 @@ class SiteController extends Controller
 
     }
     function account(){
-
-    	return view('front.user.account');
+        $id = Auth::user()->user_id;
+        $acc = Student::where('user_id', $id)->first();
+        $s_id = $acc->id;
+        $room = StdRoom::find($s_id);
+        
+    	return view('front.user.account', ['acc' => $acc, 'room' => $room]);
 
     }
     function news(){
