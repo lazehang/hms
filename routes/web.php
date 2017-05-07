@@ -20,43 +20,45 @@ Route::group(['prefix'], function( ) {
     Route::get('booking/{id}',['as' => 'booking', 'uses' => 'VaccancyController@booking']);
     Route::post('bookRoom/{id}',['as' => 'bookRoom', 'uses' => 'VaccancyController@bookRoom']);
     Route::get('booked/{id}', ['as' => 'booked', 'uses' => 'VaccancyController@booked']);
-//    Route::get('loginstd',['as' => 'loginstd', 'uses' => 'LoginController@login']);
-//    Route::post('loginprocess',['as' => 'loginprocess', 'uses' => 'LoginController@loginprocess']);
-//    Route::get('logoutstd',['as' => 'logoutstd', 'uses' => 'loginController@logout']);
-
- //    Route::get('course/add','CourseController@create');
- //    Route::get('course', ['as' => 'courseList','uses' => 'CourseController@index'] );
- //    Route::post('course',  ['as' => 'postCreateCourse','uses' => 'CourseController@postCreateCourse' ]);
- //    Route::get('course/{id}/edit', ['as' => 'viewEditCourse','uses' => 'CourseController@viewEditCourse']);
- //    Route::post('course/{id}/update', ['as' => 'postUpdateCourse','uses' => 'CourseController@postUpdateCourse']);
- //    Route::get('course/{id}/delete', ['as' => 'deleteCourse', 'uses' => 'CourseController@deleteCourse']);
-
-
- //    Route::get('course/categories',['as' => 'listCategories', 'uses' => 'CourseController@listCategories']);
- //    Route::get('course/addCategories',['as' => 'createCategories', 'uses' => 'CourseController@createCategories']);
-	// Route::post('categories',  ['as' => 'postCreateCategories','uses' => 'CourseController@postCreateCategories' ]);
-	//  Route::get('course/categories/{id}/edit', ['as' => 'viewEditCategories','uses' => 'CourseController@viewEditCategories']);
- //    Route::post('course/categories/{id}/update', ['as' => 'postUpdateCategories','uses' => 'CourseController@postUpdateCategories']);
- //    Route::get('course/categories/{id}/delete', ['as' => 'deleteCategories', 'uses' => 'CourseController@deleteCategories']);
-
-
+    Route::get('contact', ['as' => 'contact', 'uses' => 'SiteController@contact']);
+    Route::get('editStd', ['as' => 'editStd', 'uses' => 'SiteController@edit']);
+    Route::post('updateStd/{id}',['as' => 'updateStd', 'uses' => 'SiteController@update']);
 
 });
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','roles'], 'roles' => ['Admin','Super']], function(){
 	Route::get('/', ['as' => 'admin', 'uses' => 'AdminController@index']);
+
 	Route::get('vaccancies', ['as' => 'vaccancies', 'uses' => 'VaccancyController@view']);
     Route::get('addVaccancy', ['as' => 'addVaccancy', 'uses' => 'VaccancyController@add']);
     Route::post('postVaccancy', ['as' => 'postVaccancy', 'uses' => 'VaccancyController@post']);
     Route::get('editVaccancy/{id}', ['as' => 'editVaccancy', 'uses' => 'VaccancyController@edit']);
     Route::post('updateVaccancy/{id}', ['as' => 'updateVaccancy', 'uses' => 'VaccancyController@update']);
     Route::get('deleteVaccancy/{id}',['as' => 'deleteVaccancy', 'uses' => 'VaccancyController@delete']);
+
     Route::get('register_std',['as' => 'register_std', 'uses' => 'AdminController@register_std']);
     Route::get('students',['as' => 'students', 'uses' => 'AdminController@students']);
     Route::post('post_student', ['as' => 'post_student', 'uses' => 'AdminController@post_student'] );
+    Route::get('edit_std/{id}',['as' => 'edit_std', 'uses' => 'AdminController@edit_std']);
+    Route::post('update_std/{id}', ['as' => 'update_std', 'uses' => 'AdminController@update_std']);
+
     Route::post('assignRole', ['as' => 'assignRole', 'uses' => 'AdminController@postAdminAssignRoles']);
+
+    Route::get('bookings',['as' => 'bookings', 'uses' => 'VaccancyController@bookings']);
     Route::get('deleteBooking/{id}/{vaccancy_id}', ['as' => 'deleteBooking', 'uses' => 'VaccancyController@deleteBooking']);
+
     Route::get('room', ['as' => 'room', 'uses'=> 'AdminController@room']);
     Route::post('assignRoom', ['as' => 'assignRoom', 'uses' => 'AdminController@postAssignRoom']);
+    Route::get('room_categories', ['as' => 'room_categories', 'uses' => 'AdminController@view_room']);
+    Route::get('register_room', ['as' => 'register_room', 'uses' => 'AdminController@register_room']);
+    Route::post('create_room',['as' => 'create_room', 'uses' => 'AdminController@create_room']);
+    Route::get('edit_room/{id}',['as' => 'edit_room', 'uses' => 'AdminController@edit_room']);
+    Route::post('update_room/{id}', ['as' => 'update_room', 'uses' => 'AdminController@update_room']);
+    Route::get('accounts',['as' => 'accounts', 'uses' => 'AdminController@accounts']);
+    Route::get('delete-room/{id}', ['as' => 'delete-room', 'uses' => 'AdminController@deleteRoom']);
+    Route::get('pay/{id}/{date}',['as' => 'pay', 'uses' => 'AdminController@pay']);
+    Route::get('history', 'AdminController@history' );
+    Route::get('delete_account/{id}', 'AdminController@delete_account');
+    Route::post('password', ['as' => 'password', 'uses' => 'AdminController@password']);
 
 
 });

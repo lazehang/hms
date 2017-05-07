@@ -67,80 +67,10 @@
         {!! $vaccancies -> links() !!}
     </div>
 
-     <div class="content">
 
-         <table class="table table-striped" id="booking-table" >
-             <thead>
-             <tr>
-
-                 <th>Booking_id</th>
-                 <th>Room</th>
-                 <th>Name</th>
-                 <th>Contact</th>
-                 <th>Email</th>
-                 <th>Message</th>
-                 <th>Action</th>
-             </tr>
-             </thead>
-
-             <tbody>
-
-
-             @if(!$bookings == null)
-             @foreach( $bookings as $booking )
-                 <tr>
-                     <td>{{ $booking->id }}</td>
-                     <td>{{ $booking->type }}</td>
-                     <td>{{$booking->name}}</td>
-                     <td>{{ $booking->contact }}</td>
-                     <td>{{ $booking->email }}</td>
-                     <td>{{ $booking->message }}</td>
-                     <td>
-                         <a href="#"  data-toggle="modal" data-target="#bookingdelete"> <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button></a>
-                     </td>
-                 </tr>
-                 <div class="modal fade" id="bookingdelete" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                     <div class="modal-dialog modal-sm" role="document">
-                         <div class="modal-content">
-                             <div class="modal-header" style="background-color: yellow">
-                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                 <h4 class="modal-title">Warning</h4>
-                             </div>
-                             <div class="modal-body">
-                                 <p>Are you sure ??</p>
-                             </div>
-                             <div class="modal-footer">
-                                 <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                 <a href="{{ route('deleteBooking',[$booking->id, $booking->vaccancy_id] ) }}"> <button class="btn btn-danger">Yes</button></a>
-                             </div>
-
-
-                         </div>
-                     </div>
-                 </div>
-             @endforeach
-             </tbody>
-         </table>
-         {!! $bookings -> links() !!}
-                 <!-- Small modal -->
-
-
-         @else
-                 <tr>
-                     <td> NO BOOKINGS !!</td>
-                 </tr>
-         </tbody>
-         </table>
-             @endif
-
-     </div>
 
   </div>
   <!-- /.content-wrapper -->
- <script>
-     $(document).ready(function(){
-         $('#booking-table').dataTable();
-     });
- </script>
+
 
 @stop

@@ -22,7 +22,7 @@
             </div>
 
         </section>
-        <div class="container">
+        <div class="container-fluid" style="">
         <div class="row">
             <!-- left column -->
             <div class="col-md-12">
@@ -38,6 +38,7 @@
                         <th>Father's Name</th>
                         <th>Father's Address</th>
                         <th>Image</th>
+                        <th>Action</th>
                     </tr>
                   </thead>
                     <tbody>
@@ -50,6 +51,7 @@
                             <td>{{$student->father_name}}</td>
                             <td>{{$student->father_contact}}</td>
                             <td><img height="200px" width="200px" class="img img-bordered-sm" src="{{asset('assets/images/')}}/{{$student->profile_pic}}"></td>
+                            <td><a href="{{ route('edit_std', $student->std_id) }}"><i class="glyphicon glyphicon-edit"></i></a> </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -59,5 +61,6 @@
 
             </div>
 </div>
+    </div>
     </div>
 @stop

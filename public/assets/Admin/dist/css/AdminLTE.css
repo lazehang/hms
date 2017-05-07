@@ -4930,3 +4930,9 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+
+/* Footer */
+footer{
+  position: absolute;
+  bottom: 0%;
+}

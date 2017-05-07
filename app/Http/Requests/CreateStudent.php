@@ -24,7 +24,7 @@ class CreateStudent extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required', 'contact' => 'required', 'address' => 'required', 'profile_pic' => 'required'
+            'name' => 'required', 'contact' => 'required', 'address' => 'required'
         ];
     }
 }

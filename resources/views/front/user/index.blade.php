@@ -52,8 +52,9 @@ Home
             <div class="col-lg-5 col-sm-6">
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>
-                <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
+                <h2 class="section-heading">Who We Are:<br>A Special Place</h2>
+                <p class="lead">A special place to <a target="_blank" href="#">to reside</a> as a student. A home far from home. Get an impressive view of the natural beauty of surrounding Kathmandu Valley from our roof top. Here you will always find the best of Nepali hospitality and we swear of a peaceful night sleep without any noise from nightlife.
+                </p>
             </div>
 
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
@@ -61,8 +62,8 @@ Home
                     <figure class="effect-sadie">
                         <img src="{{asset('assets/img/hostel1.jpg')}}" alt="img14">
                         <figcaption>
-                            <h2>Holy <span>Sadie</span></h2>
-                            <p>Sadie never took her eyes off me. <br>She had a dark soul.</p>
+                            <h2>Clean <span>Room</span></h2>
+
                             <a href="#">View more</a>
                         </figcaption>
                     </figure>
@@ -90,7 +91,7 @@ Home
             <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                 <div class="grid">
                     <figure class="effect-sadie">
-                        <img src="{{asset('assets/img/dog.png')}}" alt="img14">
+                        <img src="{{asset('assets/img/loginhostel.jpg')}}" alt="img14">
                         <figcaption>
                             <h2>Holy <span>Sadie</span></h2>
                             <p>Sadie never took her eyes off me. <br>She had a dark soul.</p>

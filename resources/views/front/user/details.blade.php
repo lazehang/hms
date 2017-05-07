@@ -5,12 +5,16 @@
 
     @section('content')
 
+        <style>
+            .placeholder img{
+                height: 180px;
+            }
+        </style>
 
 
         <section id="info-modals">
             <div class="container content">
                 <div class="row">
-
 
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="text-center">
@@ -20,7 +24,7 @@
                         <div class="row placeholders">
                             <a href="#" data-toggle="modal" data-target="#TimeTable">
                             <div class="col-xs-6 col-sm-3 placeholder">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="  width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                                <img src="{{ asset('assets/img/time.jpg') }}"  width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                                 <h4>Time Table</h4>
                                 <span class="text-muted">Check the time table </span>
 
@@ -65,12 +69,14 @@
 
                                 </div>
                             </div>
-
+                            <a href="#"  data-toggle="modal" data-target="#feeStructure">
                             <div class="col-xs-6 col-sm-3 placeholder">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-toggle="modal" data-target="#feeStructure" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                                <img src="{{ asset('assets/img/fee.jpg') }}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                                 <h4>Fee Structure</h4>
                                 <span class="text-muted">Something else</span>
                             </div>
+                            </a>
+
                             <!-- Modal -->
                             <div class="modal fade" id="feeStructure" role="dialog">
                                 <div class="modal-dialog">
@@ -128,11 +134,15 @@
 
                                 </div>
                             </div>
+
+                            <a href="#" data-toggle="modal" data-target="#facilities">
                             <div class="col-xs-6 col-sm-3 placeholder">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-toggle="modal" data-target="#facilities" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                                <img src="{{ asset('assets/img/facilities.png')}}"  width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                                 <h4>Facilities</h4>
-                                <span class="text-muted">Something else</span>
+                                <span class="text-muted">View Here !!</span>
                             </div>
+                            </a>
+
                             <!-- Modal -->
                             <div class="modal fade" id="facilities" role="dialog">
                                 <div class="modal-dialog">
@@ -190,11 +200,15 @@
 
                                 </div>
                             </div>
+
+                            <a href="#"  data-toggle="modal" data-target="#menu" >
                             <div class="col-xs-6 col-sm-3 placeholder">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-toggle="modal" data-target="#menu" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                                <img src="{{ asset('assets/img/food.jpg') }}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                                 <h4>Food Menu</h4>
-                                <span class="text-muted">Something else</span>
+                                <span class="text-muted">See Whats up for tonight !! </span>
                             </div>
+                            </a>
+
                             <!-- Modal -->
                             <div class="modal fade" id="menu" role="dialog">
                                 <div class="modal-dialog">
@@ -252,6 +266,13 @@
 
                                 </div>
                             </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="jumbotron">
+                            <h1>Welcome</h1>
+                            <hr class="sep">
+                            <h2>Prince Boy's Hostel</h2>
                         </div>
                       </div>
 
