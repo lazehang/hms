@@ -16,9 +16,12 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('contact');
+            $table->string('email');
+            $table->string('message');
             $table->integer('vaccancy_id')->unsigned();
-            $table->timestamps();
             $table->foreign('vaccancy_id')->references('id')->on('vaccancies')->onDelete('Cascade');
+            $table->timestamps();
         });
     }
 

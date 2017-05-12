@@ -19,17 +19,17 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Quick Example</h3>
+                        <h3 class="box-title"></h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" action="{{route ('post_student') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="box-body">
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                <label for="email" class=" control-label">E-Mail Address</label>
 
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <div class="">
+                                    <input id="email" type="email" placeholder="email@example.com" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -38,24 +38,10 @@
                                     @endif
                                 </div>
                             </div>
-                            {{--<div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">--}}
-                            {{--<label for="role_id" class="col-md-4 control-label">Role id</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                            {{--<input id="role_id" type="text" class="form-control" name="role_id" value="{{ old('role_id') }}" required autofocus>--}}
-
-                            {{--@if ($errors->has('role_id'))--}}
-                            {{--<span class="help-block">--}}
-                            {{--<strong>{{ $errors->first('role_id') }}</strong>--}}
-                            {{--</span>--}}
-                            {{--@endif--}}
-                            {{--</div>--}}
-                            {{--</div>--}}
-
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
+                                <label for="password" class=" control-label">Password</label>
 
-                                <div class="col-md-6">
+                                <div class="">
                                     <input id="password" type="password" class="form-control" name="password" required>
 
                                     @if ($errors->has('password'))
@@ -67,13 +53,21 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                                <label for="password-confirm" class=" control-label">Confirm Password</label>
 
-                                <div class="col-md-6">
+                                <div class="">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Room type</label>
+                                <select  id="exampleInputEmail1" class="form-control" name="type">
+                                    @foreach($rooms as $room)
+                                        <option value="{{$room->type}}">{{ $room->type }}</option>
+                                        @endforeach
+                                </select>
+                            </div>
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Full Name</label>

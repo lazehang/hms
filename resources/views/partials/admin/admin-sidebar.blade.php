@@ -7,27 +7,22 @@
             <a href="{{route('admin')}}">Dashboard</a>
         </li>
         <li>
-            <a href="{{route('vaccancies')}}">Vaccancies</a>
+            <a href="{{ route('room_categories') }}">Room</a>
         </li>
-        <li class="has-sub"><span class="sub-arrow"></span>
-            <a href="#">Add Users</a>
-            <ul>
-                <li><a href="">Teacher</a></li>
-                <li><a href="">Student</a></li>
-                <li><a href="">Parent</a></li>
-            </ul>
+        <li>
+            <a href="{{route('vaccancies')}}">Vaccancies</a>
         </li>
         <li>
             <a href="{{route('students')}}">Student</a>
         </li>
         <li>
-            <a href="#">About</a>
+            <a href="{{ route('accounts') }}">Accounts</a>
         </li>
         <li>
-            <a href="#">Services</a>
+            <a href="{{ url('admin/history') }}">Account History</a>
         </li>
         <li>
-            <a href="#">Contact</a>
+            <a href="">CMS</a>
         </li>
     </ul>
 </div>

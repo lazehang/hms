@@ -21,8 +21,8 @@ class CreateStudentsTable extends Migration
             $table->string('father_name');
             $table->string('father_contact');
             $table->string('profile_pic');
-            $table->timestamps();
             $table->foreign('user_id')->references('user_id')->on('users');
+            $table->timestamps();
         });
     }
     /**
