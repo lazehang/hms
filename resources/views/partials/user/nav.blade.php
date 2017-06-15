@@ -1,5 +1,3 @@
-
-
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top topnav prince-nav" id="user-nav" role="navigation">
     <div class="container topnav">
@@ -40,9 +38,11 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ route('account') }}">Account</a>
-                            </li>
+                            @if (Auth::guest())
+                                <li>
+                                    <a href="{{ route('account') }}">Account</a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="{{ url('/logout') }}"
                                    onclick="event.preventDefault();
