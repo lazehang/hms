@@ -134,8 +134,8 @@
                          <th>Date</th>
                          </thead>
                          <tbody>
-                         @if(!isset($histories))
-                         @foreach($histories as $history)
+                         @if (isset($histories))
+                         @foreach ($histories as $history)
                             <tr>
                                 <td>{{ $history->std_id }}</td>
                                 <td>{{ $history->name }}</td>
