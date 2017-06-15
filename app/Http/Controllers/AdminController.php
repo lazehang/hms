@@ -80,6 +80,14 @@ class AdminController extends Controller
         }
     }
 
+    function delete_std($id)
+    {
+        $student=Student::find($id);
+        $student->delete();
+
+        return redirect()->back();
+    }
+
     function edit_std( $id )
     {
         $student = Student::find($id);
@@ -113,6 +121,23 @@ class AdminController extends Controller
     public function super(){
         $users = User::all();
         return view('front.admin.super', ['users' => $users]);
+    }
+
+    public function admin()
+    {
+        return view('front.super.register');
+    }
+
+    public function registerAdmin(Request $request)
+    {
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
+        $user->roles()->attach(Role::where('name', 'Admin')->first());
+
+        return redirect()->route('super');
     }
 
     public function room(){
@@ -236,7 +261,7 @@ class AdminController extends Controller
         $histories = DB::table('accounts')
                         ->join('students','students.std_id', '=', 'accounts.std_id')
                         ->join('rooms', 'rooms.room_id', '=', 'accounts.room_id')
-                        ->select('accounts.*','students.*', 'rooms.*')->get();
+                        ->select('accounts.*','students.name', 'students.std_id', 'rooms.type', 'rooms.fee')->get();
         return view('front.admin.history',['histories' => $histories]);
     }
 

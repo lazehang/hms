@@ -2,9 +2,6 @@
 @section('content')
 
  <div id="page-content-wrapper">
-   
-
-  
      <section class="content-header">
          <div class="container">
       <h1>
@@ -32,6 +29,7 @@
                 <tbody>  
                 
                   @foreach( $vaccancies as $vaccancy )
+                      @if ($vaccancy->seats > 0)
                             <tr>
                                 <td>{{ $vaccancy->type }}</td>
                                 <td>{{ $vaccancy->seats }}</td>
@@ -61,6 +59,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         @endforeach
         </tbody>
       </table>

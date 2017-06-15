@@ -25,7 +25,7 @@ Route::group(['prefix'], function( ) {
     Route::post('updateStd/{id}',['as' => 'updateStd', 'uses' => 'SiteController@update']);
 
 });
-Route::group(['prefix' => 'admin', 'middleware' => ['auth','roles'], 'roles' => ['Admin','Super']], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'roles'], 'roles' => ['Admin','Super']], function(){
 	Route::get('/', ['as' => 'admin', 'uses' => 'AdminController@index']);
 
 	Route::get('vaccancies', ['as' => 'vaccancies', 'uses' => 'VaccancyController@view']);
@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','roles'], 'roles' => 
     Route::post('post_student', ['as' => 'post_student', 'uses' => 'AdminController@post_student'] );
     Route::get('edit_std/{id}',['as' => 'edit_std', 'uses' => 'AdminController@edit_std']);
     Route::post('update_std/{id}', ['as' => 'update_std', 'uses' => 'AdminController@update_std']);
+    Route::get('delete_std/{id}', ['as' => 'delete_std', 'uses' => 'AdminController@delete_std']);
 
     Route::post('assignRole', ['as' => 'assignRole', 'uses' => 'AdminController@postAdminAssignRoles']);
 
@@ -62,7 +63,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','roles'], 'roles' => 
 
 
 });
-Route::get('super', ['as' => 'super', 'uses' => 'AdminController@super', 'middleware' => 'roles', 'roles' => 'Super']);
+
+Route::group(['prefix' => 'super', 'middleware' => ['auth', 'roles'], 'roles' => 'Super'], function(){
+    Route::get('super', ['as' => 'super', 'uses' => 'AdminController@super']);
+    Route::get('admins', ['as' => 'admins', 'uses' => 'AdminController@admin']);
+    Route::post('create', ['as' => 'create', 'uses' => 'AdminController@registerAdmin']);
+});
+
 
 Auth::routes();
 

@@ -11,7 +11,7 @@
                         <small>Control panel</small>
 
                         @if(Session::has('success'))
-                            <div class="alert alert-success">{{ Session::get('success') }}</div>
+                           <script>alert('{{ Session::get('success') }}')</script>
                         @endif
                     </h1>
 
@@ -43,7 +43,7 @@
                                     <td>{{ $history->name }}</td>
                                     <td>{{ $history->type }}</td>
                                     <td>{{ $history->fee }}</td>
-                                    <td>{{ $history->created_at }}</td>
+                                    <td> {{ \Carbon\Carbon::parse($history->created_at)->format('Y-M-d') }}</td>
                                     <td><a href="#" data-toggle="modal" data-target="#modal{{$history->id}}" class="btn btn-danger"> Delete </a></td>
                                     <div class="modal fade" id="modal{{ $history->id }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                                         <div class="modal-dialog modal-sm" role="document">

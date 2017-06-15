@@ -59,10 +59,10 @@
              <div class="row">
                  <div class="fb-profile">
                      <img align="left" class="fb-image-lg"  src="{{asset('assets/img/cities11.jpg')}}" alt="Profile image example"/>
-                     <img align="left" class="fb-image-profile thumbnail" src="/assets/images/{{ $acc->profile_pic }}" alt="Profile image example"/>
+                     <img align="left" class="fb-image-profile thumbnail" src="{{ asset('assets/images/')}}/{{ $acc->profile_pic }}" alt="Profile image example"/>
                      <div class="fb-profile-text">
                          <div class="inline">
-                             <h1>{{ $acc->name }} <a href="{{ route('editStd') }}"><span class="glyphicon glyphicon-edit"></span></a></h1>
+                             <h1>{{ $acc->name }}</h1>
 
                          </div>
 

@@ -64,7 +64,10 @@ class SiteController extends Controller
 
     }
     function news(){
-        $vaccancies = Vaccancy::all();
+        $vaccancies = DB::table('vaccancies')
+            ->join('rooms','rooms.type', '=','vaccancies.type' )
+            ->select('vaccancies.*', 'rooms.fee')
+            ->get();
     	return view('front.user.news',['vaccancies' => $vaccancies]);
 
     }

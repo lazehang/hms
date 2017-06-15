@@ -45,7 +45,9 @@
                                     <td>{{ $account->type }}</td>
 
                                     <td><?php
-                                        $old = \Carbon\Carbon::parse($account->created_at);
+                                        $std_room = DB::table('stdroom')->where('std_id', $account->std_id)->get()->first();
+                                        $start = $std_room->created_at;
+                                        $old = \Carbon\Carbon::parse($start);
                                         $old->month++;
                                         $fee_account = \App\Account::where('std_id', $account->std_id)
                                                 ->orderBy('deadline', 'desc')
@@ -57,24 +59,23 @@
                                             $old->addMonth();
                                         }
 
-
-                                        $date = $old->diffInDays(\Carbon\Carbon::now());
-                                            if ($date < 10)
+                                        $daysLeft = \Carbon\Carbon::now()->diffInDays($old, false);
+                                            if ($daysLeft < 10)
                                                 {
-                                                    echo "<span class='text-danger'>".$date."</span>";
+                                                    echo "<span class='text-danger'>".$daysLeft."</span>";
                                                 }
                                             else{
-                                                echo "<span class='text-primary'>".$date."</span>";
+                                                    echo "<span class='text-primary'>".$daysLeft."</span>";
                                     }
-                                        ?></td>
+                                        ?>
+                                    </td>
                                     <td>
                                         <!--if fee has been paid-->
                                         @if (!empty($fee_account))
-
-                                        <?php $old = \Carbon\Carbon::parse($fee_account->deadline); ?>
-                                            {{ $old->addMonth()->format('Y-m-d') }}
+                                            <?php $old = \Carbon\Carbon::parse($fee_account->deadline); ?>
+                                            {{ $old->addMonth()->format('Y-M-d') }}
                                         @else
-                                            {{ $old }}
+                                            {{ $old->format('Y-M-d') }}
                                         @endif
 
 

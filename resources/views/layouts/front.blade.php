@@ -7,6 +7,7 @@
 @include('partials.user.nav')
 
 @yield('content')
+
 @include('partials.user.footer')
 </body>
 

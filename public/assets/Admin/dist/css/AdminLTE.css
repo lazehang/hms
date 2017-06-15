@@ -13,6 +13,7 @@
 html,
 body {
   min-height: 100%;
+  position: relative;
 }
 .layout-boxed html,
 .layout-boxed body {
@@ -4933,6 +4934,8 @@ table.text-center th {
 
 /* Footer */
 footer{
-  position: absolute;
+  position: fixed;
+  background: #f8f8f8;
   bottom: 0%;
+  width: 100%;
 }

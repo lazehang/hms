@@ -26,7 +26,6 @@
                 <li>
                     <a href="{{route('contact')}}">Contact</a>
                 </li>
-
                 @if(Auth::guest())
                     <li>
                         <a href="{{route ('login')}}"> Login</a>
@@ -38,7 +37,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            @if (Auth::guest())
+                            @if (Auth::user()->hasRole('User'))
                                 <li>
                                     <a href="{{ route('account') }}">Account</a>
                                 </li>

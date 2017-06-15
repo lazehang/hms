@@ -22,7 +22,7 @@
             <a href="{{ url('admin/history') }}">Account History</a>
         </li>
         <li>
-            <a href="">CMS</a>
+            <a href="{{ route('bookings') }}">Bookings</a>
         </li>
     </ul>
 </div>

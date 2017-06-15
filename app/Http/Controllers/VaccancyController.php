@@ -90,12 +90,11 @@ class VaccancyController extends Controller
         $books = Vaccancy::find($id);
         $books->decrement('seats');
 
-        return redirect()->route('booked',['books' => $books]);
+        return redirect('news')->with('success', 'Room Booked');
     }
     function booked($id){
         $book = Vaccancy::find($id);
 
-       return view('front.vaccancy.booked', ['book' => $book]);
     }
 
     function  deleteBooking($id, $vaccancy_id){
@@ -106,7 +105,7 @@ class VaccancyController extends Controller
 
         $vaccancy->increment('seats');
 
-        return redirect()->route('vaccancies');
+        return redirect()->back();
 
     }
 

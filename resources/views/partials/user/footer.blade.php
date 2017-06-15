@@ -42,3 +42,17 @@
         modal.find('.modal-title').text('New message to ' + recipient);
         modal.find('.modal-body input').val(recipient) })
 </script>
+<script>
+    $(window).load(function() {
+        $('.post-module').hover(function() {
+            $(this).find('.description').stop().animate({
+                height: "toggle",
+                opacity: "toggle"
+            }, 300);
+        });
+    });
+</script>
+<script>
+    $("div.cost:even").addClass("primary-bg");
+    $("div.cost:odd").addClass("success-bg");
+</script>

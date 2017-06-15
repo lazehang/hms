@@ -51,7 +51,10 @@
                             <td>{{$student->father_name}}</td>
                             <td>{{$student->father_contact}}</td>
                             <td><img height="200px" width="200px" class="img img-bordered-sm" src="{{asset('assets/images/')}}/{{$student->profile_pic}}"></td>
-                            <td><a href="{{ route('edit_std', $student->std_id) }}"><i class="glyphicon glyphicon-edit"></i></a> </td>
+                            <td>
+                                <a href="{{ route('edit_std', $student->std_id) }}"><i class="glyphicon glyphicon-edit"></i></a>
+                            | <a href="{{ route('delete_std', $student->std_id) }}"><i class="glyphicon glyphicon-trash"></i></a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

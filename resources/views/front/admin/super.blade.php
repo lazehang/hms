@@ -35,7 +35,6 @@
                                 <td><input type="checkbox" {{ $user->hasRole('Admin') ? 'checked' : '' }} name="role_admin"></td>
                                 <td><input type="checkbox" {{ $user->hasRole('Super') ? 'checked' : '' }} name="role_super"></td>
                                 <td><input type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }} name="role_user"></td>
-
                                 {{ csrf_field() }}
                                 <td><button type="submit">Assign Roles</button></td>
                             </form>
