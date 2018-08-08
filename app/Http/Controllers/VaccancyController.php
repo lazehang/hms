@@ -27,7 +27,7 @@ class VaccancyController extends Controller
         $type = $request['type'];
         $vaccancy = Vaccancy::where('type', $type)->first();
 
-        if(count($vaccancy) > 0)
+        if(isset($vaccancy))
         {
             $old = $vaccancy->seats;
             $seats = $request['seats'];

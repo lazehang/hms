@@ -18,7 +18,7 @@ class CreateAccountsTable extends Migration
             $table->integer('std_id')->unsigned();
             $table->integer('room_id')->unsigned();
             $table->timestamp('deadline');
-            $table->timestamps()->default('current_timestamp');
+            $table->timestamps();
             $table->foreign('std_id')->references('std_id')->on('students');
             $table->foreign('room_id')->references('room_id')->on('rooms');
         });

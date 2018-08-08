@@ -12,7 +12,7 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-       $role_user = new Role;
+        $role_user = new Role;
         $role_user->name ='Admin';
         $role_user->slug = 'Admin';
         $role_user->save();
@@ -22,6 +22,9 @@ class RoleTableSeeder extends Seeder
         $role_admin->slug = 'User';
         $role_admin->save();
 
-
+        $role_admin = new Role;
+        $role_admin->name ='Super';
+        $role_admin->slug = 'Super';
+        $role_admin->save();
     }
 }

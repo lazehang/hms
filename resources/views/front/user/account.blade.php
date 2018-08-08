@@ -3,9 +3,9 @@
 {{Auth::user()->name}}
 @stop
 @section('content')
-    <script>
+  <!--   <script>
         alert("You have {{$date}} days remaining !! :)");
-    </script>
+    </script> -->
 	 <style>
 
 
@@ -17,14 +17,15 @@
          {
              font-family: 'Open Sans', sans-serif;
              background: rgba(22, 30, 48, 0.34);
+             margin-top: -2%;
 
          }
 
          .fb-profile img.fb-image-lg{
              z-index: 0;
              width: 100%;
-             margin-bottom: 10px;
-             max-height: 300px;
+             margin-bottom: 15px;
+             max-height: 400px;
          }
 
          .fb-image-profile
@@ -33,6 +34,10 @@
              z-index: 9;
              width: 230px;
              height: 230px;
+         }
+
+         .account-btn {
+            margin-top: 15px;
          }
 
          @media (max-width:768px)
@@ -58,11 +63,11 @@
          <div class="container">
              <div class="row">
                  <div class="fb-profile">
-                     <img align="left" class="fb-image-lg"  src="{{asset('assets/img/cities11.jpg')}}" alt="Profile image example"/>
-                     <img align="left" class="fb-image-profile thumbnail" src="/assets/images/{{ $acc->profile_pic }}" alt="Profile image example"/>
+                     <img align="left" class="fb-image-lg img img-responsive"  src="{{asset('assets/img/back.jpg')}}" alt="Profile image example"/>
+                     <img align="left" class="fb-image-profile thumbnail" src="{{ asset('assets/images/'.$acc->profile_pic) }}" alt="Profile image example"/>
                      <div class="fb-profile-text">
                          <div class="inline">
-                             <h1>{{ $acc->name }} <a href="{{ route('editStd') }}"><span class="glyphicon glyphicon-edit"></span></a></h1>
+                             <h1>{{ $acc->name }} <!-- <a href="{{ route('editStd') }}"><span class="glyphicon glyphicon-edit"></span></a> --></h1>
 
                          </div>
 
@@ -72,10 +77,11 @@
 
                          @endif
                      </div>
-                     <a class="btn btn-primary" data-toggle="modal" data-target="#account">
-                         Your Account History
-                     </a>
+                     
                      <div>
+                        <a class="btn btn-primary account-btn" data-toggle="modal" data-target="#account">
+                         Your Account History
+                        </a>
                         <table class="table table-striped">
                              <thead>
                              <tr>

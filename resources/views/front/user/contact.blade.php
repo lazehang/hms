@@ -22,8 +22,7 @@
             font-family: 'Teko', sans-serif;
             padding-top: 60px;
             width: 100%;
-            width: 100vw;
-            height: 550px;
+            height: 80%;
             background: #3a6186; /* fallback for old browsers */
             background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
             background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -71,7 +70,7 @@
     <section id="contact">
         <div class="section-content">
             <h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with us</span></h1>
-            <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
+            
         </div>
         <div class="contact-section">
             <div class="container">

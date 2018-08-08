@@ -9,6 +9,7 @@ use App\Student;
 use App\Vaccancy;
 use App\User;
 use App\Role;
+use App\Booking;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -22,10 +23,10 @@ class AdminController extends Controller
     function index()
     {
         $vaccancy = Vaccancy::get()->count();
-        $room = Room::get()->count();
+        $room = Booking::get()->count();
         $seat = Vaccancy::all()->sum('seats');
         $student = Student::get()->count();
-    	return view('front.admin.index', ['vaccancy' => $vaccancy, 'room' => $room, 'seat' => $seat, 'student' => $student]);
+    	return view('front.admin.index', ['vaccancy' => $vaccancy, 'booking' => $room, 'seat' => $seat, 'student' => $student]);
     }
 
     function register_std(){

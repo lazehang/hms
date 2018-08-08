@@ -76,7 +76,7 @@
 
 
 	</style>
-    <section id="portfolio">
+    <section id="portfolio" style="background: #fff">
         <div class="container text-center" style="">
 
             	<div class="col-md-12 col-sm-12 col-xs-12">

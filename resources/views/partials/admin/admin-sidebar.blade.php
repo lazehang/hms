@@ -16,13 +16,13 @@
             <a href="{{route('students')}}">Student</a>
         </li>
         <li>
+            <a href="{{ route('bookings') }}">Bookings</a>
+        </li>
+        <li>
             <a href="{{ route('accounts') }}">Accounts</a>
         </li>
         <li>
             <a href="{{ url('admin/history') }}">Account History</a>
-        </li>
-        <li>
-            <a href="">CMS</a>
         </li>
     </ul>
 </div>

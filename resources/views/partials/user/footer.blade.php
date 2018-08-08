@@ -31,6 +31,7 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jcarousel/0.3.5/jquery.jcarousel.min.js"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 <script>
     $('#exampleModal').on('show.bs.modal', function (event) { var button = $(event.relatedTarget)// Button that triggered the modal
@@ -41,4 +42,62 @@
         var modal = $(this);
         modal.find('.modal-title').text('New message to ' + recipient);
         modal.find('.modal-body input').val(recipient) })
+</script>
+
+<script type="text/javascript">
+    (function($) {
+    $(function() {
+        $('.jcarousel').jcarousel({
+            wrap: 'circular',
+            animation: 'slow'
+        }).jcarouselAutoscroll({
+            interval: 3000,
+            target: '+=1',
+            autostart: true
+        });
+
+        $('.jcarousel-control-prev')
+            .on('jcarouselcontrol:active', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('jcarouselcontrol:inactive', function() {
+                $(this).addClass('inactive');
+            })
+            .jcarouselControl({
+                target: '-=1'
+            });
+
+        $('.jcarousel-control-next')
+            .on('jcarouselcontrol:active', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('jcarouselcontrol:inactive', function() {
+                $(this).addClass('inactive');
+            })
+            .jcarouselControl({
+                target: '+=1'
+            });
+
+        $('.jcarousel-pagination')
+            .on('jcarouselpagination:active', 'a', function() {
+                $(this).addClass('active');
+            })
+            .on('jcarouselpagination:inactive', 'a', function() {
+                $(this).removeClass('active');
+            })
+            .jcarouselPagination();
+    });
+
+    $(window).on('load resize', function(){
+        $('.jcarousel').css('height', $(window).height()+'px');
+    });
+
+    $(window).scroll(function(){
+        if ($('nav').offset().top > 30){
+            $('nav').addClass('nav-lg');
+        } else {
+            $('nav').removeClass('nav-lg');
+        }
+    });
+})(jQuery);
 </script>

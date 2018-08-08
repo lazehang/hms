@@ -5,16 +5,183 @@ Home
 
 @section('content')
 
+<style type="text/css">
+
+
+/** Carousel **/
+
+.jcarousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.jcarousel ul {
+    width: 20000em;
+    position: relative;
+    list-style: none;
+    min-width: 100%;
+    height: 100%;
+}
+
+.jcarousel li {
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+/** Carousel Controls **/
+
+.jcarousel-control-prev,
+.jcarousel-control-next {
+    position: absolute;
+    top: 200px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: #4E443C;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 0 1px #000;
+    font: 24px/27px Arial, sans-serif;
+    -webkit-border-radius: 30px;
+       -moz-border-radius: 30px;
+            border-radius: 30px;
+    -webkit-box-shadow: 0 0 2px #999;
+       -moz-box-shadow: 0 0 2px #999;
+            box-shadow: 0 0 2px #999;
+}
+
+.jcarousel-control-prev {
+    left: -50px;
+}
+
+.jcarousel-control-next {
+    right: -50px;
+}
+
+.jcarousel-control-prev:hover span,
+.jcarousel-control-next:hover span {
+    display: block;
+}
+
+.jcarousel-control-prev.inactive,
+.jcarousel-control-next.inactive {
+    opacity: .5;
+    cursor: default;
+}
+
+/** Carousel Pagination **/
+
+.jcarousel-pagination {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+}
+
+.jcarousel-pagination a {
+    text-decoration: none;
+    display: inline-block;
+    
+    font-size: 11px;
+    line-height: 14px;
+    min-width: 14px;
+    
+    background: #fff;
+    color: #4E443C;
+    border-radius: 14px;
+    padding: 3px;
+    text-align: center;
+    
+    margin-right: 2px;
+    
+    opacity: .75;
+}
+
+.jcarousel-pagination a.active {
+    background: #4E443C;
+    color: #fff;
+    opacity: 1;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
+}
+    
+    .caption {
+        position: absolute;
+        top:  35%;
+        float: left;
+        margin-left: 5em;
+        color: #fff;
+        width: 25em;
+
+    }
+
+    .caption h2{
+        font-weight: 900;
+        font-size: 30px;
+        padding: 20px 0;        
+    }
+    .caption p{
+        font-size: 18px;
+        line-height: 1.7em;
+        color: #fff;
+        font-family: 'Roboto',sans-serif;
+        font-weight: lighter;
+
+    }
+
+    .slide{
+        padding: 10%;
+        width: 100vw;
+        text-align: center;
+        position: absolute;
+        transform: scale(0.5,0.5);
+        opacity: 0;
+        transition: all .3s;
+    }
+
+    .slide.blue{
+        background: #1E73BE;
+        color: white;
+    }
+    .slide.white{
+        background: #ccc;
+        color: #444444;
+    }
+    .slide.red{
+        background: #BF525A;
+        color: white;
+    }
+    .slide.active{
+        z-index: 10;
+        left: 0;
+        opacity: 1;
+        transform: scale(1,1);
+    }
+
+    .slide.inactiveLeft{
+        left: -100vw;
+        z-index: 11;
+    }
+    .slide.inactiveRight{
+        left: 100vw;
+        z-index: 11;
+    }
+  .slide:after{
+    content: attr(data-icon);
+    font-family: "FontAwesome";
+    font-size: 15vw;
+    position: absolute;
+    bottom: -8vw;
+    left: 0;
+    opacity: 0.3;
+  }
+
+</style>
+
         <!-- Header -->
 <a name="about"></a>
-
-<div class="overlay">
-    <div class="intro-header">
-        <div class="container overlay">
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message">
+        
+    
+                    <!-- <div class="intro-message">
                         <h1>Prince Boys Hostel</h1>
                         <h3>WELCOME</h3>
                         <hr class="intro-divider">
@@ -29,18 +196,38 @@ Home
                                 <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
                             </li>
                         </ul>
-                    </div>
-                </div>
+                    </div> -->
+
+            <div class="">
+             
+                    <div class="jcarousel">
+                        <ul>
+                            <li style=" background: url({{ asset('assets/img/mural.jpg') }}) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+      
+            <div class="caption" data-icon="&#xf013;">
+                <h2>Widgets/Today Extension</h2>
+                <p>Clocks+ wouldn’t be a modern app without Widgets. Your favorite cities appear in the Today View with just a swipe down, for quick glancing, Did we mention that they look awesome, too?</p>
+                <a class="btn btn-primary" target="_blank" href="https://itunes.apple.com/gb/app/clocks+/id937380413?mt=8">Download on AppStore</a>
             </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.intro-header -->
-</div>
-
-
+                            </li>
+                            <li style=" background: url({{ asset('assets/img/bed.jpg') }}) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+      <div class="caption" data-icon="&#xf013;">
+                <h2>Widgets/Today Extension</h2>
+                <p>Clocks+ wouldn’t be a modern app without Widgets. Your favorite cities appear in the Today View with just a swipe down, for quick glancing, Did we mention that they look awesome, too?</p>
+                <a target="_blank" class="btn btn-primary" href="https://itunes.apple.com/gb/app/clocks+/id937380413?mt=8">Download on AppStore</a>
+            </div>
+  </li>
+                        </ul>
+                    </div>
+                </div>  
 
 <!-- Page Content -->
 
@@ -130,34 +317,5 @@ Home
 </div>
 <!-- /.content-section-a -->
 
-<a  name="contact"></a>
-<div class="banner">
-
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-6">
-                <h2>Connect to Start Bootstrap:</h2>
-            </div>
-            <div class="col-lg-6">
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-    <!-- /.container -->
-
-</div>
-<!-- /.banner -->
 
 @stop
