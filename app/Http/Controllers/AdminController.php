@@ -26,20 +26,22 @@ class AdminController extends Controller
         $room = Booking::get()->count();
         $seat = Vaccancy::all()->sum('seats');
         $student = Student::get()->count();
-    	return view('front.admin.index', ['vaccancy' => $vaccancy, 'booking' => $room, 'seat' => $seat, 'student' => $student]);
+        return view('front.admin.index', ['vaccancy' => $vaccancy, 'booking' => $room, 'seat' => $seat, 'student' => $student]);
     }
 
-    function register_std(){
+    function register_std()
+    {
         $rooms =  Room::all();
-        return view('front.admin.register_std',['rooms' => $rooms]);
-
+        return view('front.admin.register_std', ['rooms' => $rooms]);
     }
-    function students() {
+    function students()
+    {
         $students = Student::all();
         return view('front.admin.students', ['students' => $students]);
     }
 
-    function post_student(Requests\CreateStudent $request){
+    function post_student(Requests\CreateStudent $request)
+    {
         $validator = Validator::make($request->all(), [
             'email' => 'required|unique:users|max:255',
             'password' => 'required|min:6|confirmed',
@@ -49,7 +51,7 @@ class AdminController extends Controller
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
-        }else {
+        } else {
             $user = User::create([
                 'name' => $request['name'],
                 'email' => $request['email'],
@@ -70,7 +72,7 @@ class AdminController extends Controller
             if ($request->hasFile('profile_pic')) {
                 $image = $request->file('profile_pic');
                 $filename = time() . '.' . $image->getClientOriginalExtension();
-                $request->profile_pic->move(public_path('assets/images'), $filename);
+                $request->profile_pic->move(public_path('storage'), $filename);
                 $student->profile_pic = $filename;
             }
 
@@ -81,7 +83,7 @@ class AdminController extends Controller
         }
     }
 
-    function edit_std( $id )
+    function edit_std($id)
     {
         $student = Student::find($id);
         $rooms = Room::all();
@@ -94,7 +96,7 @@ class AdminController extends Controller
         if ($request->hasFile('profile_pic')) {
             $image = $request->file('profile_pic');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            $request->profile_pic->move(public_path('assets/images'), $filename);
+            $request->profile_pic->move(public_path('storage'), $filename);
             $student->profile_pic = $filename;
         }
         $student->update([
@@ -110,13 +112,15 @@ class AdminController extends Controller
         $student->rooms()->attach(Room::where('type', $request->type)->first());
         return redirect()->route('students');
     }
-    
-    public function super(){
+
+    public function super()
+    {
         $users = User::all();
         return view('front.admin.super', ['users' => $users]);
     }
 
-    public function room(){
+    public function room()
+    {
         $students = Student::all();
         return view('front.admin.room', ['students' => $students]);
     }
@@ -140,7 +144,7 @@ class AdminController extends Controller
     public function postAssignRoom(Request $request)
     {
         $student = Student::where('name', $request['name'])->first();
-            $student->rooms()->detach();
+        $student->rooms()->detach();
 
         if ($request['room_1']) {
             $student->rooms()->attach(Room::where('type', 'single')->first());
@@ -157,60 +161,65 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function view_room(){
+    public function view_room()
+    {
         $rooms = Room::all()->sortBy('seats');
         return view('front.admin.room_categories', ['rooms' => $rooms]);
     }
 
-    public function register_room(){
+    public function register_room()
+    {
         return view('front.admin.register_room');
     }
 
-    public function create_room(Requests\CreateRoom $request){
+    public function create_room(Requests\CreateRoom $request)
+    {
 
-         $validator = Validator::make($request->all(), [
-        'type' => 'required|unique:rooms|max:255',
+        $validator = Validator::make($request->all(), [
+            'type' => 'required|unique:rooms|max:255',
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
-        }else {
+        } else {
             Room::create($request->all());
             return redirect()->route('room_categories')->with('success', 'Room Registered');
         }
-        
     }
 
-    public function edit_room($id){
+    public function edit_room($id)
+    {
         $room = Room::find($id);
         return view('front.admin.edit_room')->with(['room' => $room]);
     }
 
-    public function update_room(Requests\CreateRoom $request, $id){
+    public function update_room(Requests\CreateRoom $request, $id)
+    {
         $room = Room::find($id);
         $validator = Validator::make($request->all(), [
-            'type' => 'required|unique:rooms,type,'.$id.',room_id|max:255',
+            'type' => 'required|unique:rooms,type,' . $id . ',room_id|max:255',
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
-        }else {
+        } else {
             $room->update($request->all());
             return redirect()->route('room_categories')->with('success', 'Room Updated');
         }
-
     }
 
-    public function deleteRoom($id){
+    public function deleteRoom($id)
+    {
         Room::destroy($id);
         return redirect()->back()->with('success', 'Room Deleted Successfully !!');
     }
 
-    public function accounts() {
+    public function accounts()
+    {
         $accounts = DB::table('stdroom')
             ->join('students', 'stdroom.std_id', '=', 'students.std_id')
             ->join('rooms', 'stdroom.room_id', '=', 'rooms.room_id')
@@ -235,21 +244,21 @@ class AdminController extends Controller
     public function history()
     {
         $histories = DB::table('accounts')
-                        ->join('students','students.std_id', '=', 'accounts.std_id')
-                        ->join('rooms', 'rooms.room_id', '=', 'accounts.room_id')
-                        ->select('accounts.*','students.*', 'rooms.*')->get();
-        return view('front.admin.history',['histories' => $histories]);
+            ->join('students', 'students.std_id', '=', 'accounts.std_id')
+            ->join('rooms', 'rooms.room_id', '=', 'accounts.room_id')
+            ->select('accounts.*', 'students.*', 'rooms.*')->get();
+        return view('front.admin.history', ['histories' => $histories]);
     }
 
     public function delete_account($id)
     {
         Account::destroy($id);
-        return redirect()->back()->with('success', 'Account No.'.$id.' Entry has been removed');
+        return redirect()->back()->with('success', 'Account No.' . $id . ' Entry has been removed');
     }
 
     public function password(Request $request)
     {
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'password' => 'required|confirmed|min:6',
         ]);
 
@@ -257,21 +266,19 @@ class AdminController extends Controller
             return redirect()->back()
                 ->with('validate', 'error');
         }
-  
+
         $user = User::where('user_id', $request['id'])
-                    ->get()->first();
+            ->get()->first();
 
 
-        if (Hash::check($request['old'], $user->password))
-        {
+        if (Hash::check($request['old'], $user->password)) {
             $user->update([
                 'password' => bcrypt($request['password'])
             ]);
 
             return redirect()->back()->with('success', 'Password Changed');
-        }
-        else{
-//            echo "ERROR";
+        } else {
+            //            echo "ERROR";
             return redirect()->back()->with('error', 'Password Not Changed');
         }
     }
@@ -297,6 +304,4 @@ class AdminController extends Controller
     {
         return [];
     }
-
-
 }

@@ -64,7 +64,7 @@
              <div class="row">
                  <div class="fb-profile">
                      <img align="left" class="fb-image-lg img img-responsive"  src="{{asset('assets/img/back.jpg')}}" alt="Profile image example"/>
-                     <img align="left" class="fb-image-profile thumbnail" src="{{ asset('assets/images/'.$acc->profile_pic) }}" alt="Profile image example"/>
+                     <img align="left" class="fb-image-profile thumbnail" src="{{ asset('storage/'.$acc->profile_pic) }}" alt="Profile image example"/>
                      <div class="fb-profile-text">
                          <div class="inline">
                              <h1>{{ $acc->name }} <!-- <a href="{{ route('editStd') }}"><span class="glyphicon glyphicon-edit"></span></a> --></h1>
@@ -73,7 +73,7 @@
 
                          @if(isset($room))
                              <h4>Remaining Days :  <span class="@if($date < 10) text-danger @else text-default @endif ">{{ $date }}</span></h4>
-                             <h4>Start Date</h4><p>{{ $room->created_at->format('Y-m-d') }}</p>
+                             <h4>Start Date</h4><p>{{ $room->created_at ? $room->created_at->format('Y-m-d') : '' }}</p>
 
                          @endif
                      </div>

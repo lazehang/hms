@@ -19,22 +19,24 @@ use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
-    function index(){
+    function index()
+    {
 
         $vaccancies = Vaccancy::all();
         $homes = Home::all();
 
-    	return view('front.user.index',['vaccancies' => $vaccancies , 'homes' => $homes ]);
+        return view('front.user.index', ['vaccancies' => $vaccancies, 'homes' => $homes]);
     }
 
-    function account(){
+    function account()
+    {
         $id = Auth::user()->user_id;
         $acc = Student::where('user_id', $id)->first();
         $s_id = $acc->std_id;
         $histories = DB::table('accounts')
-            ->join('students','students.std_id', '=', 'accounts.std_id')
+            ->join('students', 'students.std_id', '=', 'accounts.std_id')
             ->join('rooms', 'rooms.room_id', '=', 'accounts.room_id')
-            ->select('accounts.*','students.*', 'rooms.*')
+            ->select('accounts.*', 'students.*', 'rooms.*')
             ->where('students.std_id', '=', $s_id)->get();
 
         $room = Std_Room::where('std_id', $s_id)->first();
@@ -44,12 +46,11 @@ class SiteController extends Controller
         $old->addMonth(1);
 
         $fee_account = Account::where('std_id', $s_id)
-                                ->orderBy('deadline', 'desc')
-                                ->get()->first();
+            ->orderBy('deadline', 'desc')
+            ->get()->first();
 
         //if fee has been paid
-        if (!empty($fee_account))
-        {
+        if (!empty($fee_account)) {
             $old = Carbon::parse($fee_account->deadline);
             $old->addMonth();
         }
@@ -57,24 +58,24 @@ class SiteController extends Controller
         $date = Carbon::now()->diffInDays($old);
 
         $accounts = DB::table('stdroom')
-                        ->join('students', 'stdroom.std_id', '=', 'students.std_id')
-                        ->join('rooms', 'stdroom.room_id', '=', 'rooms.room_id')
-                        ->where('stdroom.std_id', $s_id)
-                        ->select('students.*', 'rooms.*')->get();
+            ->join('students', 'stdroom.std_id', '=', 'students.std_id')
+            ->join('rooms', 'stdroom.room_id', '=', 'rooms.room_id')
+            ->where('stdroom.std_id', $s_id)
+            ->select('students.*', 'rooms.*')->get();
 
-        return view('front.user.account', ['acc' => $acc, 'room' => $room , 'date' => $date, 'accounts' => $accounts, 'old' => $old, 'histories' => $histories]);
-
+        return view('front.user.account', ['acc' => $acc, 'room' => $room, 'date' => $date, 'accounts' => $accounts, 'old' => $old, 'histories' => $histories]);
     }
-    function news(){
+    function news()
+    {
         $vaccancies = Vaccancy::all();
-    	return view('front.user.news',['vaccancies' => $vaccancies]);
-
+        return view('front.user.news', ['vaccancies' => $vaccancies]);
     }
-    function details(){
-        $rooms= Room::all();
-        $timetables= Timetable::all();
+    function details()
+    {
+        $rooms = Room::all();
+        $timetables = Timetable::all();
 
-        return view('front.user.details',['rooms' => $rooms, 'timetables' => $timetables]);
+        return view('front.user.details', ['rooms' => $rooms, 'timetables' => $timetables]);
     }
 
     function contact()
@@ -85,7 +86,7 @@ class SiteController extends Controller
     function edit()
     {
         $user = Student::where('user_id', Auth::user()->user_id)->get()->first();
-//        dump($user);
+        //        dump($user);
         $id = $user['std_id'];
         $student = Student::find($id);
         $rooms = Room::all();
@@ -98,7 +99,7 @@ class SiteController extends Controller
         if ($request->hasFile('profile_pic')) {
             $image = $request->file('profile_pic');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            $request->profile_pic->move(public_path('assets/images'), $filename);
+            $request->profile_pic->move(public_path('storage'), $filename);
             $student->profile_pic = $filename;
         }
         $student->update([
@@ -114,5 +115,4 @@ class SiteController extends Controller
         $student->rooms()->attach(Room::where('type', $request->type)->first());
         return redirect()->route('account');
     }
-
 }
