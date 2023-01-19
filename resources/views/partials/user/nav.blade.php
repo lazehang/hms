@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand topnav" href="{{ url('/') }}">Prince Boy's Hostel</a>
+            <a class="navbar-brand topnav" href="{{ url('/') }}">Prince</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -37,8 +37,8 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
-                        <ul class="dropdown-menu" role="menu">
-                            @if (Auth::guest())
+                        <ul class="dropdown-menu" role="menu">  
+                            @if (Auth::user()->hasRole('User'))
                                 <li>
                                     <a href="{{ route('account') }}">Account</a>
                                 </li>

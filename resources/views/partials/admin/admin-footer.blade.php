@@ -1,36 +1,4 @@
-<footer class="footer" >
-    <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
 
-
-
-        <div class="row">
-
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-
-                <div class="copyright">
-
-                    © 2015, All rights reserved
-
-                </div>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-
-                <div class="design ">
-
-                    <a href="#">Prince </a> |  <a target="_blank" href="http://www.webenlance.com">Web Design & Development by Mangal Hang Limbu</a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</footer>
 </div>
 <!-- /#wrapper -->
 

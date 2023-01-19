@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\User;
 use App\Student;
 use Carbon\Carbon;
 use Faker\Provider\DateTime;
@@ -25,6 +26,7 @@ class SiteController extends Controller
 
     	return view('front.user.index',['vaccancies' => $vaccancies , 'homes' => $homes ]);
     }
+
     function account(){
         $id = Auth::user()->user_id;
         $acc = Student::where('user_id', $id)->first();
